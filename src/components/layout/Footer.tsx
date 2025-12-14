@@ -12,7 +12,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#1A1A1A] text-white">
+    <footer id="footer" className="bg-[#1A1A1A] text-white">
       {/* Newsletter Section */}
       <div className="border-b border-white/10">
         <div className="container mx-auto px-4 py-12">
@@ -198,6 +198,33 @@ export function Footer() {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+
+        {/* Mini Map */}
+        <div className="mt-12 pt-8 border-t border-white/10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <h4 className="font-playfair text-lg text-[#C9A227] mb-3">
+                Nous trouver
+              </h4>
+              <p className="text-white/60 text-sm">
+                Au cœur du 8ème arrondissement, à deux pas des Champs-Élysées.
+                Station de métro George V (ligne 1) à 2 minutes à pied.
+              </p>
+            </div>
+            <div className="relative h-48 rounded-lg overflow-hidden border border-white/10">
+              <iframe
+                src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.2158!2d${RESTAURANT_CONFIG.coordinates.lng}!3d${RESTAURANT_CONFIG.coordinates.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDUyJzExLjMiTiAywrAxOCcyOC4xIkU!5e0!3m2!1sfr!2sfr!4v1`}
+                width="100%"
+                height="100%"
+                style={{ border: 0, filter: 'grayscale(100%) invert(92%) contrast(83%)' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Localisation du restaurant L'Excellence"
+              />
+            </div>
           </div>
         </div>
       </div>

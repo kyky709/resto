@@ -44,7 +44,7 @@ export function Header() {
       )}
     >
       <div className="container mx-auto px-4">
-        <nav className="flex items-center justify-between h-20 lg:h-24">
+        <nav id="main-navigation" className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
           <Link href="/" className="relative z-10">
             <motion.div

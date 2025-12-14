@@ -147,3 +147,19 @@ export interface Distinction {
   description: string;
   image?: string;
 }
+
+// Types pour la carte des vins
+export interface Wine {
+  id: string;
+  name: string;
+  domain: string;
+  year: number;
+  region: 'bourgogne' | 'bordeaux' | 'champagne' | 'rhone' | 'loire' | 'alsace' | 'international';
+  type: 'rouge' | 'blanc' | 'rose' | 'champagne';
+  appellation: string;
+  description: string;
+  priceBottle: number;
+  priceGlass?: number;
+  pairing: string[];
+  isRecommended: boolean;
+}

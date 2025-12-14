@@ -103,6 +103,7 @@ export const NAV_LINKS = [
   { href: "/", label: "Accueil" },
   { href: "/a-propos", label: "Notre Histoire" },
   { href: "/carte", label: "La Carte" },
+  { href: "/carte-des-vins", label: "Vins" },
   { href: "/galerie", label: "Galerie" },
   { href: "/actualites", label: "Actualités" },
   { href: "/privatisation", label: "Privatisation" },

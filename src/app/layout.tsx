@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Lato } from "next/font/google";
 import "./globals.css";
-import { Header, Footer } from "@/components/layout";
+import { Header, Footer, CookieConsent, SkipLinks } from "@/components/layout";
 import { JsonLd } from "@/components/seo";
 
 const playfair = Playfair_Display({
@@ -110,9 +110,11 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${lato.variable} antialiased min-h-screen flex flex-col`}
       >
+        <SkipLinks />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1">{children}</main>
         <Footer />
+        <CookieConsent />
       </body>
     </html>
   );

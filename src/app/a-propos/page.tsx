@@ -9,9 +9,19 @@ import { RESTAURANT_CONFIG } from '@/lib/constants';
 export default function AboutPage() {
   const { ref: heroRef, isInView: heroInView } = useInView({ threshold: 0.3 });
   const { ref: storyRef, isInView: storyInView } = useInView({ threshold: 0.2 });
+  const { ref: timelineRef, isInView: timelineInView } = useInView({ threshold: 0.1 });
   const { ref: chefRef, isInView: chefInView } = useInView({ threshold: 0.2 });
   const { ref: teamRef, isInView: teamInView } = useInView({ threshold: 0.1 });
   const { ref: valuesRef, isInView: valuesInView } = useInView({ threshold: 0.2 });
+
+  const timelineEvents = [
+    { year: '2015', title: 'Ouverture', description: 'Naissance de L\'Excellence sur les Champs-Élysées' },
+    { year: '2016', title: 'Première Étoile', description: 'Obtention de notre première étoile au Guide Michelin' },
+    { year: '2018', title: 'Rénovation', description: 'Agrandissement de la salle et création du salon privé' },
+    { year: '2020', title: 'Deuxième Étoile', description: 'Consécration avec une deuxième étoile Michelin' },
+    { year: '2022', title: 'La Liste', description: 'Entrée dans le top 100 mondial de La Liste' },
+    { year: '2024', title: 'Nouveau Menu', description: 'Lancement du menu dégustation "Terroir d\'Exception"' },
+  ];
 
   return (
     <>
@@ -95,6 +105,63 @@ export default function AboutPage() {
               </div>
               <div className="absolute -bottom-8 -left-8 w-48 h-48 border-2 border-[#C9A227] rounded-lg -z-10" />
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section ref={timelineRef} className="py-24 bg-[#722F37]">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={timelineInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-2xl mx-auto mb-16"
+          >
+            <span className="text-[#C9A227] text-sm tracking-[0.3em] uppercase mb-4 block">
+              Notre Parcours
+            </span>
+            <h2 className="font-playfair text-4xl text-white mb-6">
+              Les Moments Clés
+            </h2>
+            <div className="w-16 h-1 bg-[#C9A227] mx-auto" />
+          </motion.div>
+
+          <div className="relative max-w-4xl mx-auto">
+            {/* Timeline Line */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-[#C9A227]/30" />
+
+            {timelineEvents.map((event, index) => (
+              <motion.div
+                key={event.year}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                animate={timelineInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className={`relative flex items-center mb-12 ${
+                  index % 2 === 0 ? 'justify-start' : 'justify-end'
+                }`}
+              >
+                {/* Timeline Point */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#C9A227] rounded-full z-10" />
+
+                {/* Content Card */}
+                <div
+                  className={`w-5/12 bg-white/10 backdrop-blur-sm rounded-lg p-6 ${
+                    index % 2 === 0 ? 'mr-auto text-right pr-12' : 'ml-auto text-left pl-12'
+                  }`}
+                >
+                  <span className="text-[#C9A227] font-playfair text-2xl font-bold">
+                    {event.year}
+                  </span>
+                  <h3 className="text-white font-semibold text-lg mt-2">
+                    {event.title}
+                  </h3>
+                  <p className="text-white/70 text-sm mt-1">
+                    {event.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
