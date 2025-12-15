@@ -3,13 +3,14 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Download, Leaf, Wheat } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useInView } from '@/hooks/useInView';
 import { menuItems } from '@/lib/data';
-import { MENU_CATEGORIES, MENU_TYPES } from '@/lib/constants';
+import { MENU_CATEGORIES } from '@/lib/constants';
 
 export default function CartePage() {
   const { ref: heroRef, isInView: heroInView } = useInView({ threshold: 0.3 });
@@ -192,11 +193,13 @@ export default function CartePage() {
                                       ))}
                                     </div>
                                   </div>
-                                  <div className="text-right">
-                                    <span className="font-playfair text-xl text-[#C9A227]">
-                                      {item.price}€
-                                    </span>
-                                  </div>
+                                  {activeMenu !== 'tasting' && (
+                                    <div className="text-right">
+                                      <span className="font-playfair text-xl text-[#C9A227]">
+                                        {item.price}€
+                                      </span>
+                                    </div>
+                                  )}
                                 </div>
                                 <div className="border-b border-dashed border-[#E5E5E5] mt-6" />
                               </motion.div>
@@ -260,8 +263,8 @@ export default function CartePage() {
                 notre cave saura accompagner parfaitement votre expérience
                 gastronomique.
               </p>
-              <Button className="bg-[#C9A227] hover:bg-[#B8911F] text-[#1A1A1A]">
-                Découvrir la carte des vins
+              <Button asChild className="bg-[#C9A227] hover:bg-[#B8911F] text-[#1A1A1A]">
+                <Link href="/carte-des-vins">Découvrir la carte des vins</Link>
               </Button>
             </motion.div>
             <motion.div
