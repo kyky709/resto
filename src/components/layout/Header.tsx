@@ -85,7 +85,7 @@ export function Header() {
           </div>
 
           {/* CTA Button & Mobile Menu */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 ml-8">
             <Button
               asChild
               className="hidden sm:flex bg-[#C9A227] hover:bg-[#B8911F] text-[#1A1A1A] font-semibold"
